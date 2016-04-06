@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root 'users#index'
-
+  
+  resources :users, only: [:show, :edit, :update, :destroy] 
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+  # get '/login', :to => 'sessions#new', :as => :login 
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -54,4 +58,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
 end
