@@ -1,0 +1,69 @@
+<!-- 
+<%= form_for :session, url: session_path do |form| %>
+  <div class="text-field">
+    <%= form.label :email %>
+    <%= form.text_field :email, type: 'email' %>
+  </div>
+
+  <div class="password-field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="submit-field">
+    <%= form.submit %>
+  </div>
+
+  <div class="other-links">
+    <% if Clearance.configuration.allow_sign_up? %>
+      <%= link_to t(".sign_up"), sign_up_path %>
+    <% end %>
+    <%= link_to t(".forgot_password"), new_password_path %>
+  </div>
+<% end %>
+
+ -->
+
+<% form_for @listing do |f| %>
+
+<h4>Help travelers find the right fit</h4>
+<p>People searching on Airbnb can filter by listing basics to find a space that matches their needs</p>
+
+<% f.label :property_type %>
+<% f.select :property_type, ['prop1', 'prop2'], {}, {class: "form-control"} %>
+<% end %>
+<!-- 
+Listing
+-property_type
+-room_type
+-accommodates
+Rooms and Beds
+-bedrooms
+-beds
+-bathrooms
+
+Tell travelers about your space
+Every space on Airbnb is unique. Highlight what makes your listing welcoming so that it stands out to guests who want to stay in your area.
+-listing_name
+-summary
+
+Help guests find your place
+Travelers will use this information to find a place that’s in the right spot.
+-country
+-street_address
+-city
+-state
+-zip_code
+
+Set a nightly price for your space
+You can set a price to reflect the space, amenities, and hospitality you’ll be providing.
+-base_price
+-currency
+
+Show guests when they can book
+An accurate calendar is the most important first step for hosting
+-availability_always
+-availability_sometimes
+-availability_onetime
+
+ -->
