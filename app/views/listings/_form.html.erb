@@ -1,69 +1,77 @@
-<!-- 
-<%= form_for :session, url: session_path do |form| %>
-  <div class="text-field">
-    <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
-  </div>
+<%= form_for @listing do |f| %>
+<br>
+<h4>Help travelers find the right fit.</h4>
+<h4>People searching on Pairbnb can filter by listing basics to find a space that matches their needs.</h4>
 
-  <div class="password-field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
+<h4><strong>Listing</strong></h4>
+<%= f.label :property_type %>
+<%= f.select :property_type, ['Select...','Apartment','House','Condominium'], {}, {class: "form-control"} %>
 
-  <div class="submit-field">
-    <%= form.submit %>
-  </div>
+<%= f.label :room_type %>
+<%= f.select :room_type, ['Select...','Entire home/apt','Private room', 'Shared room'], {}, {class: "form-control"} %>
 
-  <div class="other-links">
-    <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t(".sign_up"), sign_up_path %>
-    <% end %>
-    <%= link_to t(".forgot_password"), new_password_path %>
-  </div>
+
+<h4><strong>Rooms & Beds</strong></h4>
+<%= f.label :bedrooms %>
+<%= f.select :bedrooms, ['Select...','1','2','3','4','5','6','7','8','9','10+'], {}, {class: "form-control"} %>
+
+<%= f.label :beds %>
+<%= f.select :beds, ['Select...','1','2','3','4','5','6','7','8','9','10+'], {}, {class: "form-control"} %>
+
+<%= f.label :bathrooms %>
+<%= f.select :bathrooms, ['Select...','1','2','3','4','5','6','7','8','9','10+'], {}, {class: "form-control"} %>
+<br>
+<br>
+<h4>Tell travelers about your space.</h4>
+<h4>Every space on Pairbnb is unique. Highlight what makes your listing welcoming so that it stands out to guests who want to stay in your area.</h4>
+
+<!-- <h4><strong>Listing Name</strong></h4> --> 
+<%= f.label :listing_name %>
+<%= f.text_field :listing_name, {class: "form-control"} %>
+<!-- <h4><strong>Summary</strong></h4> -->
+<%= f.label :summary %>
+<%= f.text_field :summary, {class: "form-control"} %>
+<br>
+<br>
+<h4>Help guests find your place.</h4>
+<h4>Travelers will use this information to find a place that’s in the right spot.</h4>
+
+<%= f.label :country %>
+<%= f.text_field :country, {class: "form-control"} %>
+
+<%= f.label :street_address %>
+<%= f.text_field :street_address, {class: "form-control"} %>
+
+<%= f.label :city %>
+<%= f.text_field :city, {class: "form-control"} %>
+
+<%= f.label :state %>
+<%= f.text_field :state, {class: "form-control"} %>
+
+<%= f.label :zip_code %>
+<%= f.text_field :zip_code, {class: "form-control"} %>
+<br>
+<br>
+<h4>Set a nightly price for your space.</h4>
+<h4>You can set a price to reflect the space, amenities, and hospitality you’ll be providing.
+You can set a price to reflect the space, amenities, and hospitality you’ll be providing.</h4>
+<%= f.label :base_price %>
+<%= f.text_field :base_price, {class: "form-control"} %>
+<%= f.label :currency %>
+<%= f.text_field :currency, {class: "form-control"} %>
+<br>
+<br>
+<h4>Show guests when they can book</h4>
+<h4>An accurate calendar is the most important first step for hosting</h4>
+<%= f.label :availability %>
+<%= f.select :availability, ['Select...','Always','Sometimes','Onetime'], {}, {class: "form-control"} %>
+
+<div class = 'field'>
+  <%= f.label :upload_image %><br>
+  <%= f.file_field :photos, multiple: true %>
+</div>
+
+<div class="submit-field">
+  <%= f.submit %>
+</div>
 <% end %>
-
- -->
-
-<% form_for @listing do |f| %>
-
-<h4>Help travelers find the right fit</h4>
-<p>People searching on Airbnb can filter by listing basics to find a space that matches their needs</p>
-
-<% f.label :property_type %>
-<% f.select :property_type, ['prop1', 'prop2'], {}, {class: "form-control"} %>
-<% end %>
-<!-- 
-Listing
--property_type
--room_type
--accommodates
-Rooms and Beds
--bedrooms
--beds
--bathrooms
-
-Tell travelers about your space
-Every space on Airbnb is unique. Highlight what makes your listing welcoming so that it stands out to guests who want to stay in your area.
--listing_name
--summary
-
-Help guests find your place
-Travelers will use this information to find a place that’s in the right spot.
--country
--street_address
--city
--state
--zip_code
-
-Set a nightly price for your space
-You can set a price to reflect the space, amenities, and hospitality you’ll be providing.
--base_price
--currency
-
-Show guests when they can book
-An accurate calendar is the most important first step for hosting
--availability_always
--availability_sometimes
--availability_onetime
-
- -->

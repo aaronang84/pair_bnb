@@ -1,6 +1,4 @@
 class ListingsController < ApplicationController
-  
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   def new
     @listing = Listing.new
@@ -9,34 +7,56 @@ class ListingsController < ApplicationController
   def form
   end
 
-  def create
+  def show
+    @listing = Listing.find(params[:id])
+  end
+
+  def index
+    @listing = Listing.all
+  end
+
+  def create    
     @listing = Listing.new(listing_params)
     respond_to do |format|
+    @listing.user_id = current_user.id
       if @listing.save
-        format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
+        format.html { redirect_to listings_path, notice: 'Your listing has been created.' }
       else
         format.html { render :new }
       end
     end
   end
 
-  private
-    def set_listin
-      @demo = Demo.find(params[:id])
+  def destroy
+    @listing = Listing.find(params[:id])
+    @listing.destroy
+    respond_to do |format|
+      format.html { redirect_to listings_path, notice: 'Your listing has been deleted.' }
     end
+  end
 
+  def edit
+    @listing = Listing.find(params[:id])
+  end
+
+  def update
+    @listing = Listing.find(params[:id])
+    respond_to do |format|
+      if @listing.update(listing_params)
+        format.html { redirect_to @listing, notice: 'Your listing was been updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
+  private
     def listing_params
-      listings.fetch(:listing, {})
+      params.require(:listing).permit(:property_type,:room_type,:accommodates,:bedrooms,:beds,:bathrooms,
+:listing_name,:summary,:country,:street_address,:city,:state,:zip_code,:base_price,:currency,:availability)
     end
 
 end
-
-
-
-
-
-
-
 
 #   # GET /listings
 #   # GET /listings.json
@@ -88,15 +108,14 @@ end
 #     end
 #   end
 
-#   # DELETE /demos/1
-#   # DELETE /demos/1.json
-#   def destroy
-#     @demo.destroy
-#     respond_to do |format|
-#       format.html { redirect_to demos_url, notice: 'Demo was successfully destroyed.' }
-#       format.json { head :no_content }
-#     end
-#   end
+ #  # DELETE /demos/1
+ #  # DELETE /demos/1.json
+ #  def destroy
+ #    @demo.destroy
+ #    respond_to do |format|
+ #      format.html { redirect_to demo_path, notice: 'Your demo has been deleted.' }
+ #    end
+ #  end
 
 #   private
 #     # Use callbacks to share common setup or constraints between actions.

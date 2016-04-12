@@ -1,0 +1,8 @@
+<h2>Your Listings</h2>
+
+<% @listing.each do |list| %>
+  <ul>
+	<%= link_to "#{list.listing_name}", listing_path(@list, :id => list.id) %>
+    <p><%= list.summary %></p>
+  </ul>
+<% end %>

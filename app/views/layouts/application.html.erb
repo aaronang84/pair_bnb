@@ -2,19 +2,26 @@
 <html lang="en">
 <head>
   <title>PairBnB</title>
-
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tag %>
 </head>
 
 <body>
+<!-- Warming Up -->
+<!-- <link href='http://fonts.googleapis.com/css?family=Buenard:700' rel='stylesheet' type='text/css'>
+<script src="http://pupunzi.com/mb.components/mb.YTPlayer/demo/inc/jquery.mb.YTPlayer.js"></script> -->
+<!--Video Section-->
+<!-- <section class="content-section video-section">
+   <div class="pattern-overlay">  -->
+<!--Video Section-->
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>  
-    
-<!-- Fixed navbar -->
-<nav class="navbar navbar-default navbar-fixed-top">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -44,40 +51,44 @@
         </li>
       </ul> -->
       <ul class="nav navbar-nav navbar-right">
-
+        
+        <% if signed_in? %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Become a Host<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to 'List Your Space', new_listing_path%></li>
-            <li><%= link_to 'Current Listings', listings_path%></li>
-        <!--<li><a href="#">Another action</a></li>
+            <li><%= link_to 'Your Listings', listings_path%></li>
+
+         <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">Nav header</li>
             <li><a href="#">Separated link</a></li>
-            <li><a href="#">One more separated link</a></li> -->
+            <li><a href="#">One more separated link</a></li> 
           </ul>
+
         </li>
 
         <li><a href="#">Help</a></li>
 
-        <% if signed_in? %>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
+          <a href="/user/show" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name %> <%= current_user.last_name %><span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
+       <!--      <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">Nav header</li>
-            <li><a href="#">Separated link</a></li>
-
+            <li><a href="#">Separated link</a></li> -->
+            <li><%= link_to 'View Profile', user_path(current_user.id), method: :get %></li>
+            <li><%= link_to 'Edit Profile', edit_user_path(current_user.id), method: :get %></li>
             <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
           </ul>
         </li>
-
+ 
         <% else %>
-         <li><a href="/sign_up">Sign Up</a></li>
+          <li><a href="#">Help</a></li>
+          <li><a href="/sign_up">Sign Up</a></li>
           <li class="active"><a href="/sign_in">Log In <span class="sr-only">(current)</span></a></li>
         <% end %>
       </ul>
@@ -85,10 +96,31 @@
   </div>
 </nav>
 
-     <%= yield %>
+<div id="flash">
+ <% flash.each do |key, value| %>
+   <div class="flash <%= key %>"><%= value %></div>
+ <% end %>
+</div>
 
- <div id="flash">
-   <% flash.each do |key, value| %>
-     <div class="flash <%= key %>"><%= value %></div>
-   <% end %>
- </div>
+
+<!--Video Section-->
+<!--   <a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=_yfXzD7tnbM',containment:'.video-section', quality:'large', autoPlay:true, mute:true, opacity:1}">bg</a>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+        <h1>WELCOME HOME</h1>  
+        <h3>Rent unique places to stay from local hosts in 190+ countries.</h3>
+      </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!--Video Section Ends Here -->
+
+<%= yield %>
+
+
+
+
+
+</body>

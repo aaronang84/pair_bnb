@@ -14,25 +14,38 @@
  *= require_self
  */
 
+.navbar-static-top {
+background-color: transparent;
+background: transparent;
+border-color: transparent;
+}
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
+.video-section .pattern-overlay {
+/*background-color: rgba(71, 71, 71, 0.59);*/
+min-height: 600px; 
+/* Incase of overlay problems just increase the min-height*/
 }
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+.video-section h1, .video-section h3{
+text-align:center;
+color:#fff;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
+.video-section h1{
+font-size:60px;
+font-family: 'Helvetica', serif;
+font-weight:bold;
+text-transform: uppercase;
+margin: 40px auto 0px;
+/*text-shadow: 1px 1px 1px #000;*/
+/*-webkit-text-shadow: 1px 1px 1px #000;*/
+/*-moz-text-shadow: 1px 1px 1px #000;*/
 }
-p {
-  font-style: none;
+.video-section h3{
+font-family: 'Helvetica', serif;
+font-weight:bolder;
+text-transform: uppercase;	
+font-size: 14px;
+font-weight:lighter;
+margin: 0px auto 15px;
 }
+.video-section .buttonBar{display:none;}
+.player {font-size: 1px;}

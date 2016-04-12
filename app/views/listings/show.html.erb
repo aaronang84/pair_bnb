@@ -1,0 +1,21 @@
+<h2><%= @listing.listing_name %></h2>
+<p><%= @listing.city %>, <%= @listing.state %>, <%= @listing.country %>
+
+<p>Description: <%= @listing.summary %></p>
+
+
+<ul>Property Type: <%= @listing.property_type %></ul>
+<ul>Room Type: <%= @listing.room_type %></ul>
+<ul>No. of Bedrooms: <%= @listing.bedrooms %></ul>
+<ul>No. of Beds: <%= @listing.beds %></ul>
+<ul>No. of Bathrooms: <%= @listing.bathrooms %></ul>
+
+<ul>Address: <%= @listing.street_address %></ul>
+
+<ul>Price: <%= @listing.currency %> <%= @listing.base_price %> per night</ul>
+<ul>Availability: <%= @listing.availability %></ul>
+
+<div class="btn-toolbar">
+<%= link_to "Edit", edit_listing_path, class: "btn btn-primary" %>
+<%= button_to "Delete", {:controller => "listings", :action => 'destroy', :id => @listing.id}, :confirm => "Are you sure you want to delete #{@listing.listing_name}?", :method => :delete, class: "btn btn-primary" %>
+</div>

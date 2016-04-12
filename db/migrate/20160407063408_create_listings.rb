@@ -17,9 +17,7 @@ class CreateListings < ActiveRecord::Migration
       t.string   :zip_code
       t.integer  :base_price
       t.string   :currency
-      t.boolean  :availability_always
-      t.boolean  :availability_sometimes
-      t.boolean  :availability_onetime
+      t.string   :availability
       t.timestamps null: false
     end
   end
